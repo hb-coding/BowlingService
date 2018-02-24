@@ -1,5 +1,8 @@
 package com.bowling.Entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Bowler {
     private int id;
     private String name;
