@@ -1,48 +1,62 @@
 package com.bowling.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Bowler {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    private String name;
+    @NotNull
+    private String lastName;
 
-    private Game[] games;
+    @NotNull
+    private String firstName;
 
-    public Bowler(int id, String name, Game[] games){
+    @OneToMany
+    @JoinColumn(name="bowlerId")
+    private List<Game> games;
+
+    public Bowler(Long id, String firstName, String lastName, List<Game> games){
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.games = games;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Game[] getGames() {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public List<Game> getGames() {
         return games;
     }
 
-    public void setGames(Game[] games) {
+    public void setGames(List<Game> games) {
         this.games = games;
     }
 }
