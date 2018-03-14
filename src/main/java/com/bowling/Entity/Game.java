@@ -1,9 +1,7 @@
 package com.bowling.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -15,8 +13,24 @@ public class Game {
 
     Long bowlerId;
 
+    int gameNumber;
+
+    @NotNull
+    @OneToMany
+    @JoinColumn(name="gameId")
     List<Frame> frames;
 
+    @NotNull
+    int score;
+
+    public Game() {
+    }
+
+    public Game(Long id, Long bowlerId, List<Frame> frames) {
+        this.id = id;
+        this.bowlerId = bowlerId;
+        this.frames = frames;
+    }
 
     public Long getId() {
         return id;
