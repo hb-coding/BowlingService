@@ -21,6 +21,10 @@ public class Bowler {
     @JoinColumn(name="bowlerId")
     private List<Game> games;
 
+    public Bowler() {
+
+    }
+
     public Bowler(Long id, String firstName, String lastName, List<Game> games){
         this.id = id;
         this.firstName = firstName;
