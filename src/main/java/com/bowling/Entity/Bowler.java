@@ -8,7 +8,6 @@ import java.util.List;
 public class Bowler {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull
@@ -17,9 +16,9 @@ public class Bowler {
     @NotNull
     private String firstName;
 
-    @OneToMany
-    @JoinColumn(name="bowlerId")
-    private List<Game> games;
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "bowlerId")
+    public List<Game> games;
 
     public Bowler() {
 

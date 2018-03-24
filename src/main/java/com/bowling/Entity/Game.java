@@ -8,22 +8,23 @@ import java.util.List;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     Long bowlerId;
 
     int gameNumber;
 
-    @NotNull
-    @OneToMany
+    //@NotNull
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="gameId")
     List<Frame> frames;
 
     @NotNull
     int score;
 
+
     public Game() {
+
     }
 
     public Game(Long id, Long bowlerId, List<Frame> frames) {
@@ -55,4 +56,21 @@ public class Game {
     public void setFrames(List<Frame> frames) {
         this.frames = frames;
     }
+
+    public int getGameNumber() {
+        return gameNumber;
+    }
+
+    public void setGameNumber(int gameNumber) {
+        this.gameNumber = gameNumber;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 }
